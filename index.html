@@ -13,7 +13,9 @@
         <nav aria-label="Main navigation">
             <div class="container">
                 <div class="logo">
-                    <img src="images/logo.jpg" alt="PullaPod" class="logo-image">
+                    <a href="#" aria-label="Return to top of page">
+                        <img src="images/logo.jpg" alt="PullaPod" class="logo-image">
+                    </a>
                 </div>
                 <button class="hamburger" aria-label="Toggle navigation menu">
                     <span></span>
@@ -265,7 +267,16 @@
             const link = e.target.closest('a[href^="#"]');
             if (link) {
                 e.preventDefault();
-                const targetId = link.getAttribute('href').substring(1);
+                const href = link.getAttribute('href');
+
+                // Handle link to top of page
+                if (href === '#' || href === '#top') {
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    history.pushState(null, null, window.location.pathname);
+                    return;
+                }
+
+                const targetId = href.substring(1);
                 const targetElement = document.getElementById(targetId);
 
                 if (targetElement) {
@@ -282,7 +293,19 @@
                 const link = e.target.closest('a[href^="#"]');
                 if (link) {
                     e.preventDefault();
-                    const targetId = link.getAttribute('href').substring(1);
+                    const href = link.getAttribute('href');
+
+                    // Handle link to top of page
+                    if (href === '#' || href === '#top') {
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                        history.pushState(null, null, window.location.pathname);
+                        // Close mobile menu if open
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('active');
+                        return;
+                    }
+
+                    const targetId = href.substring(1);
                     const targetElement = document.getElementById(targetId);
 
                     if (targetElement) {

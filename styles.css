@@ -118,9 +118,26 @@ nav .container {
     padding: 1rem 20px;
 }
 
+.logo a {
+    display: block;
+    line-height: 0;
+    transition: opacity 0.3s ease;
+}
+
+.logo a:hover {
+    opacity: 0.8;
+}
+
+.logo a:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
 .logo-image {
     height: 60px;
     width: auto;
+    display: block;
 }
 
 .nav-links {
@@ -220,7 +237,7 @@ nav .container {
     max-width: 600px;
     width: 100%;
     height: auto;
-    border: 10px solid var(--white);
+    border: 5px solid var(--white);
     border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
