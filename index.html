@@ -8,12 +8,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
-        <nav>
+        <nav aria-label="Main navigation">
             <div class="container">
                 <div class="logo">
                     <img src="images/logo.jpg" alt="PullaPod" class="logo-image">
                 </div>
+                <button class="hamburger" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
                 <ul class="nav-links">
                     <li><a href="#features">Features</a></li>
                     <li><a href="#installation">Installation</a></li>
@@ -30,8 +36,8 @@
         </nav>
     </header>
 
-    <main>
-        <section class="hero">
+    <main id="main-content">
+        <section class="hero" aria-label="Hero section">
             <div class="container hero-content">
                 <div class="hero-demo">
                     <img src="images/demo.gif" alt="PullaPod Demo" class="demo-gif">
@@ -115,7 +121,14 @@
 
                 <div class="options">
                     <h3>Options</h3>
-                    <table class="options-table">
+                    <table class="options-table" role="table" aria-label="Command line options">
+                        <thead>
+                            <tr>
+                                <th scope="col">Option</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
                         <tr>
                             <td><code>-f, --feed &lt;url&gt;</code></td>
                             <td>RSS feed URL (required)</td>
@@ -144,6 +157,7 @@
                             <td><code>--no-metadata</code></td>
                             <td>Skip embedding artwork and metadata</td>
                         </tr>
+                        </tbody>
                     </table>
                 </div>
 
@@ -219,5 +233,69 @@
             <p>&copy; 2025 PullaPod. All rights reserved.</p>
         </div>
     </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll only on click, not on keyboard navigation
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href^="#"]');
+            if (link) {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Update URL without jumping
+                    history.pushState(null, null, `#${targetId}`);
+                }
+            }
+        });
+
+        // Handle keyboard navigation (Enter key) on links
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter') {
+                const link = e.target.closest('a[href^="#"]');
+                if (link) {
+                    e.preventDefault();
+                    const targetId = link.getAttribute('href').substring(1);
+                    const targetElement = document.getElementById(targetId);
+
+                    if (targetElement) {
+                        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Update URL without jumping
+                        history.pushState(null, null, `#${targetId}`);
+                        // Close mobile menu if open
+                        hamburger.classList.remove('active');
+                        navLinks.classList.remove('active');
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>

@@ -19,7 +19,27 @@
 
 html {
     scroll-padding-top: 100px;
+}
+
+/* Only enable smooth scroll when user clicks, not on focus */
+html:focus-within {
+    scroll-behavior: auto;
+}
+
+html.smooth-scroll {
     scroll-behavior: smooth;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
 }
 
 body {
@@ -28,6 +48,52 @@ body {
         sans-serif;
     line-height: 1.6;
     color: var(--text-color);
+}
+
+/* Skip to main content link for keyboard users */
+.skip-link {
+    position: absolute;
+    top: -100px;
+    left: 0;
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    font-weight: 600;
+    z-index: 1000;
+    border-radius: 0 0 8px 0;
+}
+
+.skip-link:focus {
+    top: 0;
+}
+
+/* Focus styles for keyboard navigation */
+*:focus {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+*:focus:not(:focus-visible) {
+    outline: none;
+}
+
+*:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+/* Improve button focus styles */
+button:focus-visible {
+    outline: 3px solid var(--secondary-color);
+    outline-offset: 2px;
+}
+
+/* Improve link focus styles */
+a:focus-visible {
+    outline: 3px solid var(--primary-color);
+    outline-offset: 2px;
+    border-radius: 2px;
 }
 
 .container {
@@ -94,6 +160,43 @@ nav .container {
 
 .github-link svg {
     flex-shrink: 0;
+}
+
+/* Hamburger Menu */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 101;
+    width: 40px;
+    height: 40px;
+}
+
+.hamburger span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: var(--light-gray);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.hamburger.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 /* Hero Section */
@@ -304,11 +407,23 @@ nav .container {
     overflow: hidden;
 }
 
+.options-table thead {
+    background-color: var(--dark-navy);
+    color: var(--white);
+}
+
+.options-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    font-size: 1rem;
+}
+
 .options-table tr {
     border-bottom: 1px solid var(--light-bg);
 }
 
-.options-table tr:last-child {
+.options-table tbody tr:last-child {
     border-bottom: none;
 }
 
@@ -426,6 +541,48 @@ footer {
         height: 45px;
     }
 
+    .hamburger {
+        display: flex;
+    }
+
+    nav .container {
+        position: relative;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 77px;
+        right: -100%;
+        width: 100%;
+        max-width: 300px;
+        height: calc(100vh - 77px);
+        background-color: #121926;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        gap: 1.5rem;
+        transition: right 0.3s ease;
+        box-shadow: -2px 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .nav-links.active {
+        right: 0;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        width: 100%;
+        padding: 0.5rem 0;
+    }
+
+    .github-link {
+        width: 100%;
+        justify-content: center;
+    }
+
     .hero-content {
         flex-direction: column;
         gap: 2rem;
@@ -453,11 +610,6 @@ footer {
 
     .subtitle {
         font-size: 1.2rem;
-    }
-
-    .nav-links {
-        gap: 1rem;
-        flex-wrap: wrap;
     }
 
     .features h2,
