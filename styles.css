@@ -17,6 +17,11 @@
     --light-gray: #ecf0f1;
 }
 
+html {
+    scroll-padding-top: 100px;
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -54,11 +59,14 @@ nav .container {
 
 .nav-links {
     display: flex;
+    align-items: center;
     list-style: none;
     gap: 2rem;
 }
 
 .nav-links a {
+    display: inline-flex;
+    align-items: center;
     text-decoration: none;
     color: var(--light-gray);
     font-weight: 500;
@@ -69,12 +77,53 @@ nav .container {
     color: var(--secondary-color);
 }
 
+.github-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--light-gray);
+    border-radius: 6px;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.github-link:hover {
+    border-color: var(--secondary-color);
+    background-color: rgba(100, 181, 246, 0.1);
+}
+
+.github-link svg {
+    flex-shrink: 0;
+}
+
 /* Hero Section */
 .hero {
     background: linear-gradient(135deg, var(--dark-navy), var(--darker-navy));
     color: var(--white);
     padding: 6rem 0;
-    text-align: center;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.hero-demo {
+    flex-shrink: 0;
+}
+
+.demo-gif {
+    max-width: 600px;
+    width: 100%;
+    height: auto;
+    border: 10px solid var(--white);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.hero-text {
+    text-align: left;
 }
 
 .hero h1 {
@@ -313,6 +362,56 @@ pre code {
     border-radius: 0;
 }
 
+/* FAQ Section */
+.faq {
+    padding: 5rem 0;
+    background-color: var(--white);
+}
+
+.faq h2 {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    text-align: center;
+}
+
+.faq-item {
+    background-color: var(--light-bg);
+    padding: 2rem;
+    border-radius: 12px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.faq-item h3 {
+    color: var(--primary-color);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.faq-item p {
+    color: var(--text-color);
+    line-height: 1.8;
+    font-size: 1.05rem;
+}
+
+.faq-item a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.faq-item a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
 /* Footer */
 footer {
     background-color: var(--dark-navy);
@@ -325,6 +424,19 @@ footer {
 @media (max-width: 768px) {
     .logo-image {
         height: 45px;
+    }
+
+    .hero-content {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .hero-text {
+        text-align: center;
+    }
+
+    .demo-gif {
+        max-width: 100%;
     }
 
     .hero h1 {
@@ -350,7 +462,8 @@ footer {
 
     .features h2,
     .installation h2,
-    .usage h2 {
+    .usage h2,
+    .faq h2 {
         font-size: 2rem;
     }
 
@@ -374,5 +487,17 @@ footer {
 
     .install-option {
         padding: 1.5rem;
+    }
+
+    .faq-item {
+        padding: 1.5rem;
+    }
+
+    .faq-item h3 {
+        font-size: 1.1rem;
+    }
+
+    .faq-item p {
+        font-size: 1rem;
     }
 }
