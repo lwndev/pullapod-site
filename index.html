@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="PullaPod - Your podcast companion">
-    <title>PullaPod</title>
+    <meta name="description" content="PullaPod - Command-line utility to download podcast episodes from RSS feeds with proper naming and artwork embedding">
+    <title>PullaPod - Download Podcast Episodes from RSS Feeds</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -12,12 +12,13 @@
         <nav>
             <div class="container">
                 <div class="logo">
-                    <h1>PullaPod</h1>
+                    <img src="images/logo.jpg" alt="PullaPod" class="logo-image">
                 </div>
                 <ul class="nav-links">
                     <li><a href="#features">Features</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#usage">Usage</a></li>
+                    <li><a href="https://github.com/lwndev/pullapod-cli" target="_blank">GitHub</a></li>
                 </ul>
             </div>
         </nav>
@@ -26,9 +27,9 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h2>Welcome to PullaPod</h2>
-                <p class="subtitle">Your ultimate podcast companion</p>
-                <a href="#features" class="cta-button">Learn More</a>
+                <h1>PullaPod</h1>
+                <p class="subtitle">Download podcast episodes from RSS feeds with proper naming and artwork embedding</p>
+                <a href="#installation" class="cta-button">Get Started</a>
             </div>
         </section>
 
@@ -37,32 +38,134 @@
                 <h2>Features</h2>
                 <div class="feature-grid">
                     <div class="feature-card">
-                        <h3>Easy to Use</h3>
-                        <p>Simple and intuitive interface for all your podcast needs</p>
+                        <h3>Flexible Filtering</h3>
+                        <p>Download episodes by specific date, date range, or name matching. Get exactly the episodes you need.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>Discover</h3>
-                        <p>Find new podcasts tailored to your interests</p>
+                        <h3>Artwork & Metadata</h3>
+                        <p>Automatically downloads episode artwork and embeds it into MP3 files with proper metadata.</p>
                     </div>
                     <div class="feature-card">
-                        <h3>Organize</h3>
-                        <p>Keep your favorite podcasts organized and accessible</p>
+                        <h3>Clean Organization</h3>
+                        <p>Creates podcast-specific folders with sanitized filenames. No more GUIDs in your file names!</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>RSS Feed Support</h3>
+                        <p>Works with any podcast RSS feed. Download from any podcast that publishes an RSS feed.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Progress Indicators</h3>
+                        <p>Track your downloads with clear progress indicators for each episode.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Simple CLI</h3>
+                        <p>Straightforward command-line interface with intuitive options and helpful error messages.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="about">
+        <section id="installation" class="installation">
             <div class="container">
-                <h2>About PullaPod</h2>
-                <p>PullaPod is designed to enhance your podcast listening experience with powerful features and a clean, modern interface.</p>
+                <h2>Installation</h2>
+                <p class="section-intro">Install PullaPod globally via npm to use it anywhere on your system.</p>
+
+                <div class="install-option">
+                    <h3>Install from npmjs.org (Recommended)</h3>
+                    <pre><code>npm install -g pullapod</code></pre>
+                    <p>No authentication required. This is the simplest way to get started.</p>
+                </div>
+
+                <div class="install-option">
+                    <h3>Install from GitHub Packages</h3>
+                    <p>First, configure npm to use GitHub Packages for the <code>@lwndev</code> scope by adding to <code>~/.npmrc</code>:</p>
+                    <pre><code>@lwndev:registry=https://npm.pkg.github.com
+//npm.pkg.github.com/:_authToken=YOUR_GITHUB_TOKEN</code></pre>
+                    <p>Then install:</p>
+                    <pre><code>npm install -g @lwndev/pullapod</code></pre>
+                </div>
+
+                <div class="requirements">
+                    <p><strong>Requirements:</strong> Node.js 18.0.0 or higher</p>
+                </div>
             </div>
         </section>
 
-        <section id="contact" class="contact">
+        <section id="usage" class="usage">
             <div class="container">
-                <h2>Get in Touch</h2>
-                <p>Have questions or feedback? We'd love to hear from you!</p>
+                <h2>Usage</h2>
+
+                <div class="usage-basic">
+                    <h3>Basic Command</h3>
+                    <pre><code>pullapod --feed &lt;RSS_URL&gt; [options]</code></pre>
+                </div>
+
+                <div class="options">
+                    <h3>Options</h3>
+                    <table class="options-table">
+                        <tr>
+                            <td><code>-f, --feed &lt;url&gt;</code></td>
+                            <td>RSS feed URL (required)</td>
+                        </tr>
+                        <tr>
+                            <td><code>-o, --output &lt;directory&gt;</code></td>
+                            <td>Output directory (defaults to current directory)</td>
+                        </tr>
+                        <tr>
+                            <td><code>-d, --date &lt;date&gt;</code></td>
+                            <td>Download episode from specific date (YYYY-MM-DD)</td>
+                        </tr>
+                        <tr>
+                            <td><code>-s, --start &lt;date&gt;</code></td>
+                            <td>Start date for range download (YYYY-MM-DD)</td>
+                        </tr>
+                        <tr>
+                            <td><code>-e, --end &lt;date&gt;</code></td>
+                            <td>End date for range download (YYYY-MM-DD)</td>
+                        </tr>
+                        <tr>
+                            <td><code>-n, --name &lt;name&gt;</code></td>
+                            <td>Download episode by name (partial match)</td>
+                        </tr>
+                        <tr>
+                            <td><code>--no-metadata</code></td>
+                            <td>Skip embedding artwork and metadata</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="examples">
+                    <h3>Examples</h3>
+
+                    <div class="example">
+                        <h4>Download an episode from a specific date</h4>
+                        <pre><code>pullapod --feed https://example.com/podcast.rss --date 2024-01-15</code></pre>
+                    </div>
+
+                    <div class="example">
+                        <h4>Download episodes from a date range</h4>
+                        <pre><code>pullapod --feed https://example.com/podcast.rss --start 2024-01-01 --end 2024-01-31</code></pre>
+                    </div>
+
+                    <div class="example">
+                        <h4>Download episodes by name</h4>
+                        <pre><code>pullapod --feed https://example.com/podcast.rss --name "interview"</code></pre>
+                    </div>
+
+                    <div class="example">
+                        <h4>Download to a specific directory</h4>
+                        <pre><code>pullapod --feed https://example.com/podcast.rss --date 2024-01-15 --output ~/Podcasts</code></pre>
+                    </div>
+                </div>
+
+                <div class="file-organization">
+                    <h3>File Organization</h3>
+                    <p>Downloads are automatically organized into podcast-specific folders:</p>
+                    <pre><code>~/Podcasts/
+  My Favorite Podcast/
+    Episode 42 - The Answer.mp3
+    Episode 42 - The Answer.jpg</code></pre>
+                </div>
             </div>
         </section>
     </main>
