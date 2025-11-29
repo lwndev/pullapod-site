@@ -165,7 +165,8 @@ nav .container {
     color: var(--secondary-color);
 }
 
-.github-link {
+.github-link,
+.npm-link {
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -175,12 +176,14 @@ nav .container {
     transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
-.github-link:hover {
+.github-link:hover,
+.npm-link:hover {
     border-color: var(--secondary-color);
     background-color: rgba(100, 181, 246, 0.1);
 }
 
-.github-link svg {
+.github-link svg,
+.npm-link svg {
     flex-shrink: 0;
 }
 
@@ -623,7 +626,8 @@ footer {
         padding: 0.5rem 0;
     }
 
-    .github-link {
+    .github-link,
+    .npm-link {
         width: 100%;
         justify-content: center;
     }
