@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="PullaPod Documentation - Complete command reference for the podcast CLI tool">
+    <title>Documentation - PullaPod</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header>
+        <nav aria-label="Main navigation">
+            <div class="container">
+                <div class="logo">
+                    <a href="index.html" aria-label="Return to home page">
+                        <img src="images/logo.jpg" alt="PullaPod" class="logo-image">
+                    </a>
+                </div>
+                <button class="hamburger" aria-label="Toggle navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="nav-links">
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#features">Features</a></li>
+                    <li><a href="index.html#installation">Installation</a></li>
+                    <li><a href="index.html#usage">Usage</a></li>
+                    <li><a href="docs.html" class="active">Docs</a></li>
+                    <li><a href="index.html#faq">FAQ</a></li>
+                    <li><a href="https://github.com/lwndev/pullapod-cli" target="_blank" class="github-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        GitHub
+                    </a></li>
+                    <li><a href="https://www.npmjs.com/package/pullapod-cli" target="_blank" class="npm-link">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H3.999v4H1.335V8.667h5.331v5.331zm4 0v1.336H8.001V8.667h5.334v5.332h-2.669v-.001zm12.001 0h-1.33v-4h-1.336v4h-1.335v-4h-1.33v4h-2.671V8.667h8.002v5.331zM10.665 10H12v2.667h-1.335V10z"/>
+                        </svg>
+                        NPM
+                    </a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="docs-hero">
+            <div class="container">
+                <h1>Documentation</h1>
+                <p class="subtitle">Complete command reference for PullaPod CLI</p>
+            </div>
+        </section>
+
+        <section class="docs-nav">
+            <div class="container">
+                <nav aria-label="Documentation sections">
+                    <ul class="docs-toc">
+                        <li><a href="#search">Search</a></li>
+                        <li><a href="#info">Info</a></li>
+                        <li><a href="#episodes">Episodes</a></li>
+                        <li><a href="#favorite">Favorite</a></li>
+                        <li><a href="#recent">Recent</a></li>
+                        <li><a href="#download">Download</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </section>
+
+        <section id="search" class="docs-section">
+            <div class="container">
+                <h2>Search Command</h2>
+                <p class="command-description">Search for podcasts using the Podcast Index API. Find feeds by keyword, title, or author.</p>
+
+                <div class="command-syntax">
+                    <h3>Syntax</h3>
+                    <pre><code>pullapod search &lt;query&gt; [options]</code></pre>
+                </div>
+
+                <div class="command-options">
+                    <h3>Options</h3>
+                    <table class="options-table" role="table" aria-label="Search command options">
+                        <thead>
+                            <tr>
+                                <th scope="col">Option</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>--max &lt;number&gt;</code></td>
+                                <td>Maximum number of results (1-100, default: 10)</td>
+                            </tr>
+                            <tr>
+                                <td><code>--title-only</code></td>
+                                <td>Search titles only (more precise)</td>
+                            </tr>
+                            <tr>
+                                <td><code>--similar</code></td>
+                                <td>Include similar matches (fuzzy matching)</td>
+                            </tr>
+                            <tr>
+                                <td><code>--language &lt;code&gt;</code></td>
+                                <td>Filter by language code (e.g., "en", "es")</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="command-examples">
+                    <h3>Examples</h3>
+                    <div class="example">
+                        <h4>Basic search</h4>
+                        <pre><code>pullapod search javascript</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Search with result limit</h4>
+                        <pre><code>pullapod search "web development" --max 20</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Title-only search (more precise)</h4>
+                        <pre><code>pullapod search "The Daily" --title-only</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Filter by language</h4>
+                        <pre><code>pullapod search technology --language en</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Include similar matches (fuzzy search)</h4>
+                        <pre><code>pullapod search "javascrpt" --similar</code></pre>
+                    </div>
+                </div>
+
+                <div class="command-notes">
+                    <p><strong>Note:</strong> Requires Podcast Index API credentials. The search results will show you the feed URL which you can use with the episodes and download commands.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="info" class="docs-section docs-section-alt">
+            <div class="container">
+                <h2>Info Command</h2>
+                <p class="command-description">View detailed information about a podcast feed before downloading.</p>
+
+                <div class="command-syntax">
+                    <h3>Syntax</h3>
+                    <pre><code>pullapod info &lt;feed&gt;</code></pre>
+                    <p class="syntax-note">The <code>&lt;feed&gt;</code> can be either a feed URL or a Podcast Index feed ID.</p>
+                </div>
+
+                <div class="command-examples">
+                    <h3>Examples</h3>
+                    <div class="example">
+                        <h4>Get info using feed URL</h4>
+                        <pre><code>pullapod info https://feeds.fireside.fm/javascriptjabber/rss</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Get info using Podcast Index feed ID</h4>
+                        <pre><code>pullapod info 920666</code></pre>
+                    </div>
+                </div>
+
+                <div class="command-output">
+                    <h3>Output Includes</h3>
+                    <ul>
+                        <li>Basic metadata: title, author, language, episode count</li>
+                        <li>Feed ID, iTunes ID, feed URL, website, artwork URL</li>
+                        <li>Full description (HTML stripped)</li>
+                        <li>Categories</li>
+                        <li>Content type and explicit flag</li>
+                        <li>Last update time with relative date</li>
+                        <li>Feed health status (Active, Inactive, or Dead)</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="episodes" class="docs-section">
+            <div class="container">
+                <h2>Episodes Command</h2>
+                <p class="command-description">Preview episode details before downloading. View titles, dates, durations, and descriptions.</p>
+
+                <div class="command-syntax">
+                    <h3>Syntax</h3>
+                    <pre><code>pullapod episodes &lt;feed&gt; [options]</code></pre>
+                    <p class="syntax-note">The <code>&lt;feed&gt;</code> can be either a feed URL or a Podcast Index feed ID.</p>
+                </div>
+
+                <div class="command-options">
+                    <h3>Options</h3>
+                    <table class="options-table" role="table" aria-label="Episodes command options">
+                        <thead>
+                            <tr>
+                                <th scope="col">Option</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>--max &lt;number&gt;</code></td>
+                                <td>Maximum episodes to show (1-100, default: 20)</td>
+                            </tr>
+                            <tr>
+                                <td><code>--since &lt;date&gt;</code></td>
+                                <td>Only episodes after date (YYYY-MM-DD format)</td>
+                            </tr>
+                            <tr>
+                                <td><code>--full</code></td>
+                                <td>Show full descriptions instead of truncated</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="command-examples">
+                    <h3>Examples</h3>
+                    <div class="example">
+                        <h4>Preview recent episodes using feed URL</h4>
+                        <pre><code>pullapod episodes https://example.com/podcast.rss</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Preview episodes using Podcast Index feed ID</h4>
+                        <pre><code>pullapod episodes 920666</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Show more episodes</h4>
+                        <pre><code>pullapod episodes https://example.com/podcast.rss --max 50</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Show only episodes since a specific date</h4>
+                        <pre><code>pullapod episodes https://example.com/podcast.rss --since 2024-01-01</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Show full episode descriptions</h4>
+                        <pre><code>pullapod episodes https://example.com/podcast.rss --full</code></pre>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="favorite" class="docs-section docs-section-alt">
+            <div class="container">
+                <h2>Favorite Command</h2>
+                <p class="command-description">Save your favorite podcast feeds for quick access and use with the recent command.</p>
+
+                <div class="command-syntax">
+                    <h3>Syntax</h3>
+                    <pre><code>pullapod favorite &lt;subcommand&gt; [options]</code></pre>
+                </div>
+
+                <div class="command-options">
+                    <h3>Subcommands</h3>
+                    <table class="options-table" role="table" aria-label="Favorite subcommands">
+                        <thead>
+                            <tr>
+                                <th scope="col">Subcommand</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>add &lt;feed-url&gt;</code></td>
+                                <td>Add a podcast to favorites</td>
+                            </tr>
+                            <tr>
+                                <td><code>list</code></td>
+                                <td>Show all saved favorites</td>
+                            </tr>
+                            <tr>
+                                <td><code>remove &lt;name|url&gt;</code></td>
+                                <td>Remove a podcast from favorites</td>
+                            </tr>
+                            <tr>
+                                <td><code>clear</code></td>
+                                <td>Remove all favorites</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="command-options">
+                    <h3>Options</h3>
+                    <table class="options-table" role="table" aria-label="Favorite command options">
+                        <thead>
+                            <tr>
+                                <th scope="col">Option</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>--name &lt;name&gt;</code></td>
+                                <td>Custom name for the feed (optional, auto-fetches from API)</td>
+                            </tr>
+                            <tr>
+                                <td><code>--force</code></td>
+                                <td>Skip confirmation prompt (for clear subcommand)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="command-examples">
+                    <h3>Examples</h3>
+                    <div class="example">
+                        <h4>Add a podcast (auto-fetches name from API)</h4>
+                        <pre><code>pullapod favorite add https://feeds.fireside.fm/javascriptjabber/rss</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Add with a custom name</h4>
+                        <pre><code>pullapod favorite add https://feeds.example.com/feed.xml --name "My Podcast"</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>List all favorites</h4>
+                        <pre><code>pullapod favorite list</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Remove by name (case-insensitive, supports partial match)</h4>
+                        <pre><code>pullapod favorite remove "JavaScript Jabber"</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Remove by URL</h4>
+                        <pre><code>pullapod favorite remove https://feeds.fireside.fm/javascriptjabber/rss</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Clear all favorites (with confirmation)</h4>
+                        <pre><code>pullapod favorite clear</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Clear all favorites (skip confirmation)</h4>
+                        <pre><code>pullapod favorite clear --force</code></pre>
+                    </div>
+                </div>
+
+                <div class="command-notes">
+                    <p><strong>Storage:</strong> Favorites are stored in <code>~/.config/pullapod/favorites.json</code> (or <code>$XDG_CONFIG_HOME/pullapod/favorites.json</code> if set).</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="recent" class="docs-section">
+            <div class="container">
+                <h2>Recent Command</h2>
+                <p class="command-description">Check for new episodes across all your saved favorite podcasts with a single command.</p>
+
+                <div class="command-syntax">
+                    <h3>Syntax</h3>
+                    <pre><code>pullapod recent [options]</code></pre>
+                </div>
+
+                <div class="command-options">
+                    <h3>Options</h3>
+                    <table class="options-table" role="table" aria-label="Recent command options">
+                        <thead>
+                            <tr>
+                                <th scope="col">Option</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>--max &lt;number&gt;</code></td>
+                                <td>Max episodes per feed (1-20, default: 5)</td>
+                            </tr>
+                            <tr>
+                                <td><code>--days &lt;number&gt;</code></td>
+                                <td>Only episodes from last N days (1-90, default: 7)</td>
+                            </tr>
+                            <tr>
+                                <td><code>--feed &lt;name&gt;</code></td>
+                                <td>Show recent episodes from specific saved feed only</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="command-examples">
+                    <h3>Examples</h3>
+                    <div class="example">
+                        <h4>Show recent episodes from all saved feeds (last 7 days)</h4>
+                        <pre><code>pullapod recent</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Show up to 10 episodes per feed</h4>
+                        <pre><code>pullapod recent --max 10</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Show episodes from last 14 days</h4>
+                        <pre><code>pullapod recent --days 14</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Show recent episodes from specific saved feed</h4>
+                        <pre><code>pullapod recent --feed "JavaScript Jabber"</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Combine options</h4>
+                        <pre><code>pullapod recent --feed "Syntax" --max 3 --days 3</code></pre>
+                    </div>
+                </div>
+
+                <div class="command-notes">
+                    <p><strong>Note:</strong> The output groups episodes by podcast, showing episode titles and publish dates. Use this to quickly check for new content before downloading.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="docs-section docs-section-alt">
+            <div class="container">
+                <h2>Download Command</h2>
+                <p class="command-description">Download podcast episodes from any RSS feed with filtering by date, date range, or episode name.</p>
+
+                <div class="command-syntax">
+                    <h3>Syntax</h3>
+                    <pre><code># Using default command (backward compatible)
+pullapod --feed &lt;RSS_URL&gt; [options]
+
+# Or using explicit download subcommand
+pullapod download --feed &lt;RSS_URL&gt; [options]</code></pre>
+                </div>
+
+                <div class="command-options">
+                    <h3>Options</h3>
+                    <table class="options-table" role="table" aria-label="Download command options">
+                        <thead>
+                            <tr>
+                                <th scope="col">Option</th>
+                                <th scope="col">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><code>-f, --feed &lt;url&gt;</code></td>
+                                <td>RSS feed URL (required)</td>
+                            </tr>
+                            <tr>
+                                <td><code>-o, --output &lt;directory&gt;</code></td>
+                                <td>Output directory (defaults to current directory)</td>
+                            </tr>
+                            <tr>
+                                <td><code>-d, --date &lt;date&gt;</code></td>
+                                <td>Download episode from specific date (YYYY-MM-DD)</td>
+                            </tr>
+                            <tr>
+                                <td><code>-s, --start &lt;date&gt;</code></td>
+                                <td>Start date for range download (YYYY-MM-DD)</td>
+                            </tr>
+                            <tr>
+                                <td><code>-e, --end &lt;date&gt;</code></td>
+                                <td>End date for range download (YYYY-MM-DD)</td>
+                            </tr>
+                            <tr>
+                                <td><code>-n, --name &lt;name&gt;</code></td>
+                                <td>Download episode by name (partial match)</td>
+                            </tr>
+                            <tr>
+                                <td><code>--no-metadata</code></td>
+                                <td>Skip embedding artwork and metadata</td>
+                            </tr>
+                            <tr>
+                                <td><code>-h, --help</code></td>
+                                <td>Display help</td>
+                            </tr>
+                            <tr>
+                                <td><code>-V, --version</code></td>
+                                <td>Display version</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="command-examples">
+                    <h3>Examples</h3>
+                    <div class="example">
+                        <h4>Download an episode from a specific date</h4>
+                        <pre><code>pullapod --feed https://example.com/podcast.rss --date 2024-01-15</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Download episodes from a date range</h4>
+                        <pre><code>pullapod --feed https://example.com/podcast.rss --start 2024-01-01 --end 2024-01-31</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Download episodes by name</h4>
+                        <pre><code>pullapod --feed https://example.com/podcast.rss --name "interview"</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Download to a specific directory</h4>
+                        <pre><code>pullapod --feed https://example.com/podcast.rss --date 2024-01-15 --output ~/Podcasts</code></pre>
+                    </div>
+                    <div class="example">
+                        <h4>Download without embedding metadata</h4>
+                        <pre><code>pullapod --feed https://example.com/podcast.rss --date 2024-01-15 --no-metadata</code></pre>
+                    </div>
+                </div>
+
+                <div class="file-organization">
+                    <h3>File Organization</h3>
+                    <p>Downloads are automatically organized into podcast-specific folders:</p>
+                    <pre><code>~/Podcasts/
+  My Favorite Podcast/
+    Episode 42 - The Answer.mp3
+    Episode 42 - The Answer.jpg</code></pre>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>Made by Leif Nelson and Robots.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('a[href^="#"]');
+            if (link) {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                const targetId = href.substring(1);
+                const targetElement = document.getElementById(targetId);
+
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    history.pushState(null, null, `#${targetId}`);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

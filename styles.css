@@ -702,3 +702,207 @@ footer {
         font-size: 1rem;
     }
 }
+
+/* Documentation Page Styles */
+.docs-hero {
+    background: linear-gradient(135deg, var(--dark-navy), var(--darker-navy));
+    color: var(--white);
+    padding: 3rem 0;
+    text-align: center;
+}
+
+.docs-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.docs-hero .subtitle {
+    font-size: 1.3rem;
+    opacity: 0.9;
+    margin-bottom: 0;
+}
+
+/* Docs Navigation / TOC */
+.docs-nav {
+    background-color: var(--white);
+    border-bottom: 1px solid var(--light-gray);
+    padding: 1rem 0;
+    position: sticky;
+    top: 77px;
+    z-index: 50;
+}
+
+.docs-toc {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem 2rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.docs-toc a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.docs-toc a:hover {
+    background-color: var(--light-bg);
+    color: var(--primary-color);
+}
+
+/* Docs Sections */
+.docs-section {
+    padding: 4rem 0;
+    background-color: var(--white);
+}
+
+.docs-section-alt {
+    background-color: var(--light-bg);
+}
+
+.docs-section h2 {
+    font-size: 2.2rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--primary-color);
+    display: inline-block;
+}
+
+.docs-section h3 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.docs-section h3:first-of-type {
+    margin-top: 1.5rem;
+}
+
+.docs-section h4 {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.command-description {
+    font-size: 1.15rem;
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+}
+
+.command-syntax,
+.command-options,
+.command-examples,
+.command-output,
+.command-notes {
+    margin-bottom: 2rem;
+}
+
+.syntax-note {
+    font-size: 0.95rem;
+    color: var(--gray);
+    margin-top: 0.5rem;
+}
+
+.command-output ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    color: var(--text-color);
+}
+
+.command-output li {
+    margin-bottom: 0.5rem;
+}
+
+.command-notes {
+    background-color: rgba(30, 136, 229, 0.1);
+    border-left: 4px solid var(--primary-color);
+    padding: 1rem 1.5rem;
+    border-radius: 0 8px 8px 0;
+}
+
+.command-notes p {
+    margin: 0;
+    color: var(--text-color);
+}
+
+/* Active nav link */
+.nav-links a.active {
+    color: var(--secondary-color);
+}
+
+/* Docs link section on index page */
+.docs-link-section {
+    background-color: var(--white);
+    padding: 2rem;
+    border-radius: 12px;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.docs-link-section p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.docs-link-section a {
+    color: var(--primary-color);
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.docs-link-section a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+/* Responsive styles for docs page */
+@media (max-width: 768px) {
+    .docs-hero h1 {
+        font-size: 2rem;
+    }
+
+    .docs-hero .subtitle {
+        font-size: 1.1rem;
+    }
+
+    .docs-nav {
+        top: 67px;
+    }
+
+    .docs-toc {
+        gap: 0.5rem 1rem;
+    }
+
+    .docs-toc a {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .docs-section {
+        padding: 3rem 0;
+    }
+
+    .docs-section h2 {
+        font-size: 1.8rem;
+    }
+
+    .docs-section h3 {
+        font-size: 1.2rem;
+    }
+
+    .command-description {
+        font-size: 1rem;
+    }
+}
