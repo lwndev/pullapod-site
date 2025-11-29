@@ -727,7 +727,7 @@ footer {
 .docs-nav {
     background-color: var(--white);
     border-bottom: 1px solid var(--light-gray);
-    padding: 1rem 0;
+    padding: 1.5rem 0 1rem 0;
     position: sticky;
     top: 77px;
     z-index: 50;
